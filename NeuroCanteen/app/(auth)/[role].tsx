@@ -3,8 +3,8 @@ import { useRouter, useLocalSearchParams, router } from 'expo-router';
 import { ArrowLeft } from 'lucide-react-native';
 import { useState } from 'react';
 
-const API_URL = 'http://127.0.0.1:8142'; // Update this with your actual backend URL
-
+const API_URL = 'http://192.168.133.145:8142'; // Update this with your actual backend URL
+//https://python-backend-1-823u.onrender.com
 export default function LoginScreen() {
   const { role } = useLocalSearchParams();
   const [username, setUsername] = useState('');
@@ -35,10 +35,10 @@ export default function LoginScreen() {
       if (response.ok && data.jwt) {
         // Store the JWT token securely
         // Note: In a production app, use secure storage
-        localStorage.setItem('jwtToken', data.jwt);
-        
+        //localStorage.setItem('jwtToken', data.jwt);
+        Alert.alert('Login Sucess', "");
         // Navigate to admin dashboard
-        router.replace('/(tabs)');
+        //router.replace('/(tabs)');
       } else {
         Alert.alert('Login Failed', 'Invalid credentials');
       }
