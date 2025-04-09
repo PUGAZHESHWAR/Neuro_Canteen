@@ -3,7 +3,7 @@ import { useRouter, useLocalSearchParams, router } from 'expo-router';
 import { ArrowLeft } from 'lucide-react-native';
 import { useState } from 'react';
 
-const API_URL = 'http://192.168.133.145:8142'; // Update this with your actual backend URL
+const API_URL = 'http://192.168.220.145:8142'; // Update this with your actual backend URL
 //https://python-backend-1-823u.onrender.com
 export default function LoginScreen() {
   const { role } = useLocalSearchParams();
