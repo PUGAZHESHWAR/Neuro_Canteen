@@ -1,5 +1,13 @@
 import { Tabs } from 'expo-router';
-import { Chrome as Home, User } from 'lucide-react-native';
+import {
+  Chrome as Home,
+  User,
+  Users,
+  Stethoscope,
+  Truck,
+  Utensils,
+  LogOut,
+} from 'lucide-react-native';
 
 export default function AdminLayout() {
   return (
@@ -12,7 +20,8 @@ export default function AdminLayout() {
           height: 60,
           paddingBottom: 10,
         },
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
@@ -25,6 +34,48 @@ export default function AdminLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color, size }) => <User size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="staff"
+        options={{
+          title: 'Staff',
+          tabBarIcon: ({ color, size }) => <Users size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="patient"
+        options={{
+          title: 'Patient',
+          tabBarIcon: ({ color, size }) => <User size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="dietitian"
+        options={{
+          title: 'Dietitian',
+          tabBarIcon: ({ color, size }) => <Stethoscope size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="delivery"
+        options={{
+          title: 'Delivery',
+          tabBarIcon: ({ color, size }) => <Truck size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="kitchen"
+        options={{
+          title: 'Kitchen',
+          tabBarIcon: ({ color, size }) => <Utensils size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="logout"
+        options={{
+          title: 'Logout',
+          tabBarIcon: ({ color, size }) => <LogOut size={size} color={color} />,
         }}
       />
     </Tabs>

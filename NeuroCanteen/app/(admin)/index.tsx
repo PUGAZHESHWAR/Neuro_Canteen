@@ -1,16 +1,19 @@
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { Users, Bed, Stethoscope, Bike, ChefHat, Menu as MenuIcon } from 'lucide-react-native';
+import { useRouter } from 'expo-router';
 
 const menuItems = [
-  { title: 'Menu', icon: MenuIcon },
-  { title: 'Staff', icon: Users },
-  { title: 'Patient', icon: Bed },
-  { title: 'Dietitian', icon: Stethoscope },
-  { title: 'Delivery', icon: Bike },
-  { title: 'Kitchen', icon: ChefHat },
+  { title: 'Menu', icon: MenuIcon, path: 'menu' },
+  { title: 'Staff', icon: Users, path: 'staff' },
+  { title: 'Patient', icon: Bed, path: 'patient' },
+  { title: 'Dietitian', icon: Stethoscope, path: 'dietitian' },
+  { title: 'Delivery', icon: Bike, path: 'delivery' },
+  { title: 'Kitchen', icon: ChefHat, path: 'kitchen' },
 ];
 
 export default function HomeScreen() {
+  const router = useRouter();
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -18,7 +21,11 @@ export default function HomeScreen() {
       </View>
       <View style={styles.grid}>
         {menuItems.map((item, index) => (
-          <TouchableOpacity key={index} style={styles.card}>
+          <TouchableOpacity
+            key={index}
+            style={styles.card}
+            onPress={() => router.push(`/admin/${item.path}`)}
+          >
             <View style={styles.iconContainer}>
               <item.icon size={32} color="#fff" />
             </View>

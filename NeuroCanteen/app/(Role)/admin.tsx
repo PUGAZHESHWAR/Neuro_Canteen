@@ -5,7 +5,7 @@ import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-const API_URL = 'http://172.20.10.3:8142'; // Update this with your actual backend URL
+const API_URL = 'http://192.168.220.145:8142'; // Update this with your actual backend URL
 
 export default function LoginScreen() {
   const [username, setUsername] = useState('');
