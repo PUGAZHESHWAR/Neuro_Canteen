@@ -3,20 +3,14 @@ import { useRouter, useLocalSearchParams, router } from 'expo-router';
 import { ArrowLeft } from 'lucide-react-native';
 import { useState } from 'react';
 
-const API_URL = 'http://192.168.220.145:8142'; // Update this with your actual backend URL
-//https://python-backend-1-823u.onrender.com
+const API_URL = 'https://python-backend-1-823u.onrender.com'; // Update this with your actual backend URL
+
 export default function LoginScreen() {
-  const { role } = useLocalSearchParams();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
-    if (role !== 'admin') {
-      Alert.alert('Not Implemented', 'Only admin login is currently implemented');
-      return;
-    }
-
     try {
       setLoading(true);
       const response = await fetch(`${API_URL}/authenticate/admin`, {
@@ -199,3 +193,4 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
 });
+

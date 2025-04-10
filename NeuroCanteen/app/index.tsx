@@ -35,7 +35,7 @@ export default function HomeScreen() {
           <TouchableOpacity
             key={role.id}
             style={styles.roleCard}
-            onPress={() => router.push(`/(auth)/${role.id}`)}
+            onPress={() => router.push(`/(Role)/${role.id}`)}
           >
             <View style={styles.iconContainer}>
               <role.icon size={32} color="#FFFFFF" />
