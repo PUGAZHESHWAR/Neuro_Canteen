@@ -2,8 +2,10 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Keyboa
 import { useRouter, useLocalSearchParams, router } from 'expo-router';
 import { ArrowLeft } from 'lucide-react-native';
 import { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const API_URL = 'https://python-backend-1-823u.onrender.com'; // Update this with your actual backend URL
+
+const API_URL = 'http:192.168.220.145:8142'; // Update this with your actual backend URL
 
 export default function LoginScreen() {
   const [username, setUsername] = useState('');
@@ -23,16 +25,17 @@ export default function LoginScreen() {
           password,
         }),
       });
-      
+  
       const data = await response.json();
-      console.log({data})
+      console.log({ data });
+  
       if (response.ok && data.jwt) {
-        // Store the JWT token securely
-        // Note: In a production app, use secure storage
-        //localStorage.setItem('jwtToken', data.jwt);
-        Alert.alert('Login Sucess', "");
+        // Store the JWT token in localStorage
+        await AsyncStorage.setItem('jwtToken', data.jwt);
+  
+        Alert.alert('Login Success', '');
         // Navigate to admin dashboard
-        //router.replace('/(tabs)');
+        // router.replace('/(tabs)');
       } else {
         Alert.alert('Login Failed', 'Invalid credentials');
       }
@@ -43,6 +46,7 @@ export default function LoginScreen() {
       setLoading(false);
     }
   };
+  
 
   const handleBack = () => {
     router.replace('/');
