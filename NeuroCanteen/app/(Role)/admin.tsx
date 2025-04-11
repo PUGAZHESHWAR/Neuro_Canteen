@@ -1,47 +1,39 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { useRouter, useLocalSearchParams, router } from 'expo-router';
 import { ArrowLeft } from 'lucide-react-native';
-import { useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
-const API_URL = 'http://192.168.220.145:8142'; // Update this with your actual backend URL
+import { useState,useEffect } from 'react';
+import { loginAdmin } from '../api/auth';
+import axiosInstance from '../api/axiosInstance';
 
 export default function LoginScreen() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // const MenuScreen = () => {
+  //     const fetchMenuItems = async () => {
+  //       try {
+  //         const response = await axiosInstance.get('/menu-items');
+  //         console.log('Menu Items:', response.data);
+  //       } catch (error) {
+  //         console.log('Error fetching menu items:', error);
+  //       }
+  //     };
+  //     fetchMenuItems()
+  // }
+
   const handleLogin = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(`${API_URL}/authenticate/admin`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      });
+    setLoading(true);
   
-      const data = await response.json();
-      console.log({ data });
-  
-      if (response.ok && data.jwt) {
-        // Store the JWT token in localStorage
-        await AsyncStorage.setItem('jwtToken', data.jwt);
-        router.replace('/(admin)');
-      } else {
-        Alert.alert('Login Failed', 'Invalid credentials');
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-      Alert.alert('Error', 'Failed to connect to the server');
-    } finally {
-      setLoading(false);
+    const result = await loginAdmin(username, password);
+    console.log()
+    if (result.success) {
+      // MenuScreen()
+      router.replace('/(admin)');
+    } else {
+      Alert.alert('Login Failed', result.message);
     }
+    setLoading(false);
   };
   
 
