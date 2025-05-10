@@ -120,14 +120,14 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 60,
+    top: 20,
     left: 24,
     zIndex: 1,
   },
   header: {
     alignItems: 'center',
-    paddingTop: 60,
-    paddingBottom: 40,
+    paddingTop: 10,
+    paddingBottom: 30,
   },
   title: {
     fontSize: 24,
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     color: '#374151',
   },
   form: {
-    padding: 24,
+    padding: 20,
   },
   inputGroup: {
     marginBottom: 24,
