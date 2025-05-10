@@ -10,3 +10,5 @@ expo-env.d.ts
 /node_modules
 **/.DS_Store
 
+/ios
+/android

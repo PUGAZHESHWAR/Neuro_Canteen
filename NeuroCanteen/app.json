@@ -13,10 +13,10 @@
       "bundleIdentifier": "com.pugazhexpo.NeuroCanteen"
     },
     "android": {
-    "adaptiveIcon": {
-      "foregroundImage": "./assets/images/splash-icon.png",
-      "backgroundColor": "#ffffff"
-    },
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/splash-icon.png",
+        "backgroundColor": "#ffffff"
+      },
       "package": "com.pugazhexpo.NeuroCanteen"
     },
     "web": {
@@ -38,6 +38,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "68bcb37c-b4bf-4d79-a0b8-640abcf780c9"
+      }
+    },
+    "owner": "pugazh-expo"
   }
 }
