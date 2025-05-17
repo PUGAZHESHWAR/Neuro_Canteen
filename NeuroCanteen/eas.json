@@ -1,18 +1,19 @@
 {
-  "cli": {
-    "version": ">= 5.9.1"
-  },
-  "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal",
-      "android": {
-        "gradleCommand": ":app:assembleDebug"
-      }
+    "cli": {
+      "version": ">= 5.9.1"
     },
-    "preview": {
-      "distribution": "internal"
-    },
-    "production": {}
+    "build": {
+      "development": {
+        "developmentClient": true,
+        "distribution": "internal",
+        "android": {
+          "jdk": "17"
+        }
+      },
+      "preview": {
+        "distribution": "internal"
+      },
+      "production": {}
+    }
   }
-} 
+  
